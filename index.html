@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小森波 Poco Mori ｜ 日系清新微甜日常服飾</title>
+  
+  <!-- Google Fonts: Zen Maru Gothic & M PLUS Rounded 1c for Japanese gentle aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons for rounded Japanese line iconography -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mori: {
+              cream: '#FAF6EE',
+              paper: '#F5EFE4',
+              sage: '#7C8E6C',
+              'sage-light': '#E9EFE6',
+              caramel: '#C68B59',
+              blush: '#E8A598',
+              'blush-soft': '#FBECE8',
+              charcoal: '#393532',
+              muted: '#7E766D'
+            }
+          },
+          fontFamily: {
+            sans: ['"Zen Maru Gothic"', '"M PLUS Rounded 1c"', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 8px 30px rgba(124, 142, 108, 0.08)',
+            'card': '0 4px 20px rgba(70, 60, 50, 0.06)',
+            'float': '0 12px 35px rgba(198, 139, 89, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF6EE;
+      color: #393532;
+      font-family: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    /* Subtle paper texture effect */
+    .bg-grain {
+      background-image: radial-gradient(#d3c9ba 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+    }
+
+    .badge-stitch {
+      border: 1.5px dashed #C68B59;
+    }
+
+    /* Scroll progress indicator at top */
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3.5px;
+      background: linear-gradient(90deg, #7C8E6C, #C68B59, #E8A598);
+      z-index: 100;
+      width: 0%;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Scroll reveal transitions */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* Text highlight and shimmer animations */
+    .text-shimmer {
+      background: linear-gradient(110deg, #393532 25%, #C68B59 50%, #7C8E6C 75%, #393532 90%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShimmerMove 6s ease-in-out infinite alternate;
+    }
+    @keyframes textShimmerMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* Dynamic brush stroke underline animation */
+    .brush-underline {
+      position: relative;
+      display: inline-block;
+    }
+    .brush-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 8px;
+      background: rgba(232, 165, 152, 0.45);
+      border-radius: 4px;
+      z-index: -1;
+      transform: scaleX(0);
+      transform-origin: left bottom;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s;
+    }
+    .reveal.active .brush-underline::after,
+    .brush-underline.show::after {
+      transform: scaleX(1);
+    }
+
+    /* Floating cute sticker animations */
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(1.8deg); }
+    }
+    .animate-float {
+      animation: floatGentle 4.5s ease-in-out infinite;
+    }
+
+    /* Photo hover zoom effect */
+    .photo-zoom-container {
+      overflow: hidden;
+    }
+    .photo-zoom-container img {
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
+    }
+    .photo-zoom-container:hover img {
+      transform: scale(1.07);
+    }
+
+    /* Custom cute scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF6EE;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D8CEBD;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #7C8E6C;
+    }
+  </style>
+</head>
+<body class="bg-grain min-h-screen flex flex-col antialiased selection:bg-mori-blush selection:text-white">
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scrollProgress"></div>
+
+  <!-- Announcement Bar -->
+  <div class="bg-mori-sage text-white text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wider flex items-center justify-center gap-2">
+    <i class="ph ph-sparkle text-amber-200"></i>
+    <span>新店開幕慶｜全館消費滿 NT$ 1,500 即享免運，首單贈「手繪小森野餐別針」</span>
+    <i class="ph ph-flower-tulip text-amber-200"></i>
+  </div>
+
+  <header id="mainNav" class="sticky top-0 z-40 bg-[#FAF6EE]/90 backdrop-blur-md border-b border-[#E8DFC8]/60 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-full bg-mori-sage-light flex items-center justify-center text-mori-sage group-hover:scale-105 transition-transform border border-mori-sage/20">
+          <i class="ph ph-plant text-2xl"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xl sm:text-2xl font-bold tracking-tight text-mori-charcoal">小森波</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-mori-blush-soft text-mori-caramel font-medium border border-mori-blush/20">Poco Mori</span>
+          </div>
+          <p class="text-[10px] text-mori-muted tracking-widest font-normal">こもれびポ・日常裡的微糖生活</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-mori-charcoal">
+        <a href="#concept" class="hover:text-mori-sage transition py-1">品牌理念</a>
+        <a href="#products" class="hover:text-mori-sage transition py-1">微甜系列</a>
+        <a href="#studio" class="hover:text-mori-sage transition py-1">穿搭實驗室</a>
+        <a href="#story" class="hover:text-mori-sage transition py-1">品牌故事與 4W</a>
+        <a href="#ootd" class="hover:text-mori-sage transition py-1">小森日誌</a>
+      </nav>
+
+      <!-- Action items -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSearch()" class="w-10 h-10 rounded-full hover:bg-mori-paper text-mori-charcoal flex items-center justify-center transition" aria-label="搜尋商品">
+          <i class="ph ph-magnifying-glass text-xl"></i>
+        </button>
+
+        <!-- Cart Trigger Button -->
+        <button onclick="toggleCartDrawer(true)" class="relative w-10 h-10 rounded-full hover:bg-mori-paper text-mori-charcoal flex items-center justify-center transition" aria-label="打開購物袋">
+          <i class="ph ph-tote text-xl"></i>
+          <span id="cartBadgeCount" class="absolute -top-1 -right-1 bg-mori-caramel text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-full hover:bg-mori-paper text-mori-charcoal flex items-center justify-center" aria-label="選單">
+          <i class="ph ph-list text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Nav -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-[#E8DFC8] bg-[#FAF6EE] px-6 py-4 space-y-3 shadow-lg">
+      <a href="#concept" onclick="toggleMobileMenu()" class="block py-2 text-mori-charcoal font-medium hover:text-mori-sage">品牌理念</a>
+      <a href="#products" onclick="toggleMobileMenu()" class="block py-2 text-mori-charcoal font-medium hover:text-mori-sage">微甜系列</a>
+      <a href="#studio" onclick="toggleMobileMenu()" class="block py-2 text-mori-charcoal font-medium hover:text-mori-sage">穿搭實驗室</a>
+      <a href="#story" onclick="toggleMobileMenu()" class="block py-2 text-mori-charcoal font-medium hover:text-mori-sage">品牌故事與 4W</a>
+      <a href="#ootd" onclick="toggleMobileMenu()" class="block py-2 text-mori-charcoal font-medium hover:text-mori-sage">小森日誌 (OOTD)</a>
+    </div>
+  </header>
+
+  <section class="relative pt-8 pb-16 md:pt-14 md:pb-24 overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute -top-24 -left-20 w-80 h-80 rounded-full bg-mori-blush-soft/50 blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-20 w-96 h-96 rounded-full bg-mori-sage-light/60 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Text Box with Text Effects -->
+        <div class="lg:col-span-6 space-y-6 text-center lg:text-left z-10 reveal active">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E5DAC3] shadow-sm text-xs text-mori-muted">
+            <span class="w-2 h-2 rounded-full bg-mori-sage animate-ping"></span>
+            <span>2026 Spring / Summer Collection</span>
+            <span class="text-mori-caramel font-bold">木漏れ日</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-5xl font-bold tracking-tight leading-snug">
+            <span class="text-shimmer">把森林裡的溫柔微風，</span><br>
+            <span class="relative inline-block text-mori-sage mt-2 brush-underline show">
+              悄悄縫進每一天。
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-mori-muted leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Poco Mori 小森波相信：可愛不需要過度用力，舒適更不用妥協。以親膚天然棉麻與圓潤低飽和奶茶色調，打造自在寬鬆、陪伴你漫步街角的日常微糖單品。
+          </p>
+
+          <!-- Core statement card -->
+          <div class="p-4 rounded-2xl bg-white/85 border border-[#EAE1D1] shadow-card backdrop-blur-sm text-sm text-mori-charcoal text-left transition hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <i class="ph ph-quote text-2xl text-mori-caramel shrink-0"></i>
+              <p class="leading-relaxed">
+                「我們是一個<strong>日系清新微甜</strong>的日常服飾品牌，透過<strong>親膚天然材質與巧思剪裁</strong>，讓每一位女孩在忙碌中，都能毫無拘束地做回溫柔又自在的自己。」
+              </p>
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#products" class="px-8 py-3.5 rounded-full bg-mori-sage text-white font-medium hover:bg-[#6A7B5B] transition shadow-soft flex items-center gap-2 group">
+              <i class="ph ph-basket text-lg group-hover:scale-110 transition-transform"></i>
+              探索本季新品
+            </a>
+            <a href="#studio" class="px-7 py-3.5 rounded-full bg-white text-mori-charcoal font-medium border border-[#D9CEBA] hover:bg-mori-paper transition flex items-center gap-2 group">
+              <i class="ph ph-sparkle text-mori-caramel group-hover:rotate-12 transition-transform"></i>
+              穿搭靈感生成器
+            </a>
+          </div>
+
+          <!-- Guarantee points -->
+          <div class="grid grid-cols-3 gap-2 pt-4 border-t border-[#E8DFC8]/70 text-xs text-mori-muted">
+            <div class="flex items-center gap-1.5 justify-center lg:justify-start">
+              <i class="ph ph-leaf text-mori-sage text-base"></i>
+              <span>100% 嚴選親膚棉麻</span>
+            </div>
+            <div class="flex items-center gap-1.5 justify-center lg:justify-start">
+              <i class="ph ph-shield-check text-mori-sage text-base"></i>
+              <span>寬鬆落肩不挑身形</span>
+            </div>
+            <div class="flex items-center gap-1.5 justify-center lg:justify-start">
+              <i class="ph ph-needle text-mori-sage text-base"></i>
+              <span>原創細緻手繪刺繡</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Realistic Photo Showcase -->
+        <div class="lg:col-span-6 relative reveal reveal-delay-2 active">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            
+            <div class="relative rounded-3xl overflow-hidden bg-white p-4 shadow-float border border-[#E9E0CE]">
+              <div class="relative h-[420px] sm:h-[480px] rounded-2xl overflow-hidden bg-[#EAE2D3] photo-zoom-container">
+                <!-- Real Photography: Japanese Natural Style Sage Green Linen Dress -->
+                <img 
+                  src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1000&q=80" 
+                  alt="小森波 娃娃領抓皺棉麻長洋裝（鼠尾草綠）" 
+                  class="w-full h-full object-cover object-center"
+                  loading="eager"
+                  onerror="this.src='https://placehold.co/800x1000/FAF6EE/7C8E6C?text=Sage+Green+Linen+Dress'"
+                />
+
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+
+                <!-- Product Overlay Card -->
+                <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl border border-white/80 flex items-center justify-between shadow-lg">
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="w-2 h-2 rounded-full bg-mori-sage"></span>
+                      <span class="text-xs text-mori-muted">熱銷人氣第一位</span>
+                    </div>
+                    <p class="text-sm font-bold text-mori-charcoal">娃娃領抓皺棉麻長洋裝（鼠尾草綠）</p>
+                  </div>
+                  <span class="text-sm font-bold text-mori-caramel">NT$ 1,680</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Sticker Badge 1 -->
+            <div class="absolute -top-4 -right-4 bg-white px-4 py-2.5 rounded-2xl shadow-md border border-[#E5DAC3] flex items-center gap-2 animate-float">
+              <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-sm font-bold">100%</span>
+              <div class="text-left">
+                <p class="text-xs font-bold text-mori-charcoal">天然水洗亞麻</p>
+                <p class="text-[10px] text-mori-muted">透氣・自在・無束縛</p>
+              </div>
+            </div>
+
+            <!-- Floating Sticker Badge 2 -->
+            <div class="absolute -bottom-5 -left-4 bg-mori-blush-soft px-4 py-2.5 rounded-2xl shadow-md border border-mori-blush/30 flex items-center gap-2">
+              <i class="ph ph-heart text-mori-blush text-xl"></i>
+              <div class="text-left">
+                <p class="text-xs font-bold text-mori-charcoal">微糖生活提案</p>
+                <p class="text-[10px] text-mori-caramel">給日常一點點剛剛好的甜</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-white border-y border-[#E9E1CE] reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+        <div class="flex items-center gap-3.5 p-2 group hover:translate-x-1 transition-transform">
+          <div class="w-12 h-12 rounded-2xl bg-mori-cream flex items-center justify-center text-mori-sage text-2xl border border-[#EFE5D3] shrink-0 group-hover:bg-mori-sage-light transition-colors">
+            <i class="ph ph-feather"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-mori-charcoal">天然親膚</h4>
+            <p class="text-xs text-mori-muted mt-0.5">高親膚棉麻、無負擔觸感</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 p-2 group hover:translate-x-1 transition-transform">
+          <div class="w-12 h-12 rounded-2xl bg-mori-cream flex items-center justify-center text-mori-caramel text-2xl border border-[#EFE5D3] shrink-0 group-hover:bg-amber-100 transition-colors">
+            <i class="ph ph-sparkle"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-mori-charcoal">藏在日常的巧思</h4>
+            <p class="text-xs text-mori-muted mt-0.5">貝殼扣、微蕾絲手縫細節</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 p-2 group hover:translate-x-1 transition-transform">
+          <div class="w-12 h-12 rounded-2xl bg-mori-cream flex items-center justify-center text-mori-sage text-2xl border border-[#EFE5D3] shrink-0 group-hover:bg-mori-sage-light transition-colors">
+            <i class="ph ph-arrows-out-simple"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-mori-charcoal">寬鬆包容輪廓</h4>
+            <p class="text-xs text-mori-muted mt-0.5">不挑身形、隨性無拘束</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 p-2 group hover:translate-x-1 transition-transform">
+          <div class="w-12 h-12 rounded-2xl bg-mori-cream flex items-center justify-center text-mori-blush text-2xl border border-[#EFE5D3] shrink-0 group-hover:bg-rose-100 transition-colors">
+            <i class="ph ph-coffee"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-mori-charcoal">慢活美學態度</h4>
+            <p class="text-xs text-mori-muted mt-0.5">經得起時間洗練的耐穿百搭</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SCROLLYTELLING: 隨捲動逐步展開的品牌故事與產品核心連結
+  ======================================================== -->
+  <section id="concept" class="relative py-20 bg-gradient-to-b from-[#FAF6EE] via-[#F4EFE6] to-[#FAF6EE] border-b border-[#E8DFC8]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Intro Header -->
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#E5DAC3] text-xs text-mori-caramel font-semibold shadow-xs mb-3">
+          <i class="ph ph-sparkle"></i>
+          <span>SCROLL TO DISCOVER</span>
+          <span class="text-mori-muted">・</span>
+          <span>隨捲動閱讀小森故事</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-bold text-mori-charcoal">一件衣服，一段被陽光擁抱的旅程</h2>
+        <p class="text-sm sm:text-base text-mori-muted mt-2">輕輕向下捲動，閱讀我們如何將代代木公園的微風，化作你身上的日常微糖。</p>
+      </div>
+
+      <!-- Scrollytelling Main Stage Container -->
+      <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start" id="scrollyStage">
+        
+        <!-- Left: Sticky Visual Screen (釘選視窗，隨章節切換影像與細節) -->
+        <div class="lg:col-span-6 lg:sticky lg:top-28 z-20">
+          <div class="relative bg-white p-4 sm:p-5 rounded-3xl border border-[#E8DEC9] shadow-card">
+            
+            <!-- Dynamic Image Frame with Crossfade -->
+            <div class="relative h-[340px] sm:h-[480px] rounded-2xl overflow-hidden bg-[#ECE4D5]">
+              <img 
+                id="storyStickyImg" 
+                src="https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?auto=format&fit=crop&w=1000&q=80" 
+                alt="小森波品牌故事" 
+                class="w-full h-full object-cover transition-all duration-700 ease-out transform scale-100"
+                onerror="this.src='https://placehold.co/900x1200/FAF6EE/7C8E6C?text=Poco+Mori+Story'"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none"></div>
+
+              <!-- Floating Chapter Pill -->
+              <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/80 shadow-sm flex items-center gap-2">
+                <span id="storyChapterBadge" class="w-2 h-2 rounded-full bg-mori-sage animate-pulse"></span>
+                <span id="storyChapterText" class="text-xs font-bold text-mori-charcoal">CHAPTER 01 / 04</span>
+              </div>
+
+              <!-- Bottom Image Highlight Card -->
+              <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-white/70 shadow-md transition-all duration-500">
+                <span id="storyImageSubhead" class="text-[11px] font-bold text-mori-caramel block mb-0.5">木漏れ日・東京公園的午後啟發</span>
+                <h4 id="storyImageTitle" class="text-sm font-bold text-mori-charcoal truncate">不是為了討好眼光，而是穿上時心裡的鬆弛</h4>
+              </div>
+            </div>
+
+            <!-- Interactive Story Progress Dots -->
+            <div class="flex items-center justify-between pt-4 mt-1 border-t border-[#F0E6D4] text-xs text-mori-muted">
+              <span class="flex items-center gap-1.5">
+                <i class="ph ph-book-open text-mori-sage"></i>
+                <span>故事閱讀進度</span>
+              </span>
+              <div class="flex items-center gap-2">
+                <span class="step-dot w-2.5 h-2.5 rounded-full bg-mori-sage transition-all"></span>
+                <span class="step-dot w-2.5 h-2.5 rounded-full bg-[#E0D5C1] transition-all"></span>
+                <span class="step-dot w-2.5 h-2.5 rounded-full bg-[#E0D5C1] transition-all"></span>
+                <span class="step-dot w-2.5 h-2.5 rounded-full bg-[#E0D5C1] transition-all"></span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Scrolling Chapter Blocks (捲動步驟段落) -->
+        <div class="lg:col-span-6 space-y-16 lg:space-y-24 py-4 lg:py-8" id="storyChaptersContainer">
+          
+          <!-- Step 1: 源起 (Who & Origin) -->
+          <div class="story-step p-6 sm:p-8 rounded-3xl bg-white border border-[#ECE1CF] shadow-sm transition-all duration-500 opacity-100 ring-2 ring-mori-sage/20" data-step="0" data-img="https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?auto=format&fit=crop&w=1000&q=80" data-badge="CHAPTER 01 / 04" data-sub="木漏れ日・東京代代木公園" data-title="不是為了討好眼光，而是穿上時心裡的鬆弛">
+            <div class="flex items-center gap-2 text-xs font-bold text-mori-sage mb-2">
+              <span class="w-6 h-6 rounded-full bg-mori-sage-light text-mori-sage flex items-center justify-center text-xs">01</span>
+              <span>ORIGIN 品牌源起</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-mori-charcoal leading-snug">
+              「那一刻我們發現，最動人的風格從不是刻意用力。」
+            </h3>
+            <p class="text-sm text-mori-muted leading-relaxed mt-3">
+              在節奏緊湊的都市日常裡，女孩常常被「要精緻」、「要成熟」、「要顯瘦」的標籤追著跑。創辦人漫步在東京代代木公園的樹蔭下，看著陽光穿透葉縫灑落的光斑（木漏れ日），微風揚起柔軟的洋裝下擺——那一抹毫無包袱的愜意微笑，正是現代女孩最渴望的自在。
+            </p>
+            <div class="mt-4 p-3.5 rounded-2xl bg-mori-cream/70 border border-[#E9DFCB] flex items-center gap-3">
+              <i class="ph ph-heart text-xl text-mori-caramel shrink-0"></i>
+              <p class="text-xs text-mori-charcoal">
+                <strong>Who 為誰存在：</strong>獻給 18～32 歲、想在忙碌生活中卸下緊繃束縛，保有一顆微甜少女心的你。
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2: 理念 (Why & Concept) -->
+          <div class="story-step p-6 sm:p-8 rounded-3xl bg-white border border-[#ECE1CF] shadow-sm transition-all duration-500 opacity-60" data-step="1" data-img="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=80" data-badge="CHAPTER 02 / 04" data-sub="30% 微糖哲學" data-title="不甜膩、不造作，像一杯溫潤微糖燕麥奶">
+            <div class="flex items-center gap-2 text-xs font-bold text-mori-caramel mb-2">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-mori-caramel flex items-center justify-center text-xs">02</span>
+              <span>CONCEPT 微糖哲學</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-mori-charcoal leading-snug">
+              填補「冷淡成熟」與「浮誇戲劇化」之間的日常留白
+            </h3>
+            <p class="text-sm text-mori-muted leading-relaxed mt-3">
+              市面上的快時尚往往偏向歐美緊身或灰黑冷淡，而日系風格又常落入難以穿去上班上課的過度繁複。小森波提出「30% 微糖日常」：保有寬鬆落肩的隨性大器，僅在領口、袖口點綴一抹俏皮荷葉或小圓領，不需盛裝打扮，也能自然散發日劇女主角般的氛圍感。
+            </p>
+            <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+              <div class="p-2.5 rounded-xl bg-mori-cream border border-[#ECE0CD] text-mori-charcoal flex items-center gap-1.5">
+                <i class="ph ph-check-circle text-mori-sage"></i> 落肩不勒腰腹
+              </div>
+              <div class="p-2.5 rounded-xl bg-mori-cream border border-[#ECE0CD] text-mori-charcoal flex items-center gap-1.5">
+                <i class="ph ph-check-circle text-mori-sage"></i> 柔和低飽和大地調
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: 質料 (What & Fabric) -->
+          <div class="story-step p-6 sm:p-8 rounded-3xl bg-white border border-[#ECE1CF] shadow-sm transition-all duration-500 opacity-60" data-step="2" data-img="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1000&q=80" data-badge="CHAPTER 03 / 04" data-sub="天然觸感・呼吸面料" data-title="洗水水洗亞麻與天絲混紡，越洗越溫潤">
+            <div class="flex items-center gap-2 text-xs font-bold text-mori-sage mb-2">
+              <span class="w-6 h-6 rounded-full bg-mori-sage-light text-mori-sage flex items-center justify-center text-xs">03</span>
+              <span>MATERIAL 親膚面料</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-mori-charcoal leading-snug">
+              真正的溫柔，是早晨肌膚碰到布料的那一瞬間
+            </h3>
+            <p class="text-sm text-mori-muted leading-relaxed mt-3">
+              我們對布料極其挑剔。全系列嚴選天然透氣棉麻、柔軟天絲混紡與純棉雙層皺織。拒絕化學刺癢塑料纖維，每一件單品都經過預水洗工藝處理，透氣散熱、洗後依然保留亞麻特有的天然溫潤手感，陪你度過盛夏與微涼的每一刻。
+            </p>
+            <div class="mt-4 p-3.5 rounded-2xl bg-[#EAF0E6] border border-mori-sage/20 text-xs text-mori-charcoal space-y-1">
+              <p>🍃 <strong>透氣排汗度：</strong>天絲亞麻雙層織物，夏日漫步不悶熱</p>
+              <p>🧵 <strong>耐穿哲學：</strong>經多次機洗不輕易起毛球，陪伴時間更長久</p>
+            </div>
+          </div>
+
+          <!-- Step 4: 巧思與產品特色 (How & Details -> Products) -->
+          <div class="story-step p-6 sm:p-8 rounded-3xl bg-white border border-[#ECE1CF] shadow-sm transition-all duration-500 opacity-60" data-step="3" data-img="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1000&q=80" data-badge="CHAPTER 04 / 04" data-sub="巧思剪裁・走入衣櫥" data-title="自然連結微甜選品，為日常添一抹治癒">
+            <div class="flex items-center gap-2 text-xs font-bold text-mori-caramel mb-2">
+              <span class="w-6 h-6 rounded-full bg-rose-100 text-mori-blush flex items-center justify-center text-xs">04</span>
+              <span>DETAILS & CRAFT 巧思細節</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-mori-charcoal leading-snug">
+              藏在衣服裡的貼心小秘密，自然走進你的日常
+            </h3>
+            <p class="text-sm text-mori-muted leading-relaxed mt-3">
+              每一顆光澤溫潤的天然貝殼扣、胸前不起眼卻讓人會心一笑的手繪小刺繡、裙裝兩側必定設計的隱藏深口袋，以及不挑身形的花苞鬆緊腰——這些微小巧思，就是小森波想給你的微糖擁抱。
+            </p>
+            
+            <!-- 自然連動到產品特色與導購按鈕 -->
+            <div class="mt-6 pt-5 border-t border-[#EDE3D0] space-y-3">
+              <div class="text-xs text-mori-muted">
+                「我們是一個<strong>日系清新微甜</strong>的日常服飾品牌，透過<strong>親膚天然材質與巧思剪裁</strong>，讓<strong>每一位女孩在平凡忙碌的生活中，都能毫無拘束地做回溫柔又自在的自己</strong>。」
+              </div>
+              <a href="#products" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-mori-sage text-white text-xs font-bold hover:bg-[#6A7B5B] transition shadow-soft">
+                <span>探索本季微甜單品系列</span>
+                <i class="ph ph-arrow-down text-sm"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="story" class="py-16 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs uppercase tracking-widest text-mori-caramel font-semibold">Brand Blueprint</span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-mori-charcoal mt-1">品牌核心 4W 經營藍圖</h2>
+      <p class="text-sm text-mori-muted mt-2">點選分頁快速查看我們在定位、產品與社群溝通上的核心思考。</p>
+    </div>
+
+    <!-- 4W Tabs Controls -->
+    <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8" id="fourWTabs">
+      <button onclick="switchTab('who')" id="tab-who" class="tab-btn active px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition shadow-sm bg-mori-sage text-white">
+        1. Who 為誰存在
+      </button>
+      <button onclick="switchTab('what')" id="tab-what" class="tab-btn px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition shadow-sm bg-white text-mori-charcoal border border-[#E2D6C0] hover:bg-mori-cream">
+        2. What 提供什麼
+      </button>
+      <button onclick="switchTab('why')" id="tab-why" class="tab-btn px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition shadow-sm bg-white text-mori-charcoal border border-[#E2D6C0] hover:bg-mori-cream">
+        3. Why 為什麼需要
+      </button>
+      <button onclick="switchTab('how')" id="tab-how" class="tab-btn px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition shadow-sm bg-white text-mori-charcoal border border-[#E2D6C0] hover:bg-mori-cream">
+        4. How 如何溝通
+      </button>
+      <button onclick="switchTab('story')" id="tab-story" class="tab-btn px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition shadow-sm bg-white text-mori-charcoal border border-[#E2D6C0] hover:bg-mori-cream">
+        📖 創辦人札記
+      </button>
+    </div>
+
+    <!-- Tab Panels Container -->
+    <div class="bg-white rounded-3xl p-6 sm:p-10 border border-[#ECE0CD] shadow-card min-h-[260px]">
+      
+      <!-- Panel: WHO -->
+      <div id="panel-who" class="tab-panel block transition-opacity duration-300">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-8 space-y-4">
+            <span class="text-xs font-bold text-mori-sage tracking-wider uppercase">Target Audience</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-mori-charcoal">為渴望自在鬆弛、保有少女心的你而存在</h3>
+            <p class="text-sm text-mori-muted leading-relaxed">
+              主要面向 18～32 歲的學生與職場女性，特別是熱愛日系自然風（Mori Girl / City Girl）、崇尚純粹舒服生活的女孩。她們厭倦了快時尚的緊繃與粗糙質料，只想在日常生活裡被柔軟親膚的好衣服安靜療癒。
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-3 py-1 rounded-full bg-mori-sage-light text-mori-sage text-xs font-semibold">#拒絕緊繃身形束縛</span>
+              <span class="px-3 py-1 rounded-full bg-mori-sage-light text-mori-sage text-xs font-semibold">#日常微糖剛剛好</span>
+              <span class="px-3 py-1 rounded-full bg-mori-sage-light text-mori-sage text-xs font-semibold">#日劇感氛圍穿搭</span>
+            </div>
+          </div>
+          <div class="md:col-span-4 bg-mori-cream p-5 rounded-2xl border border-[#ECE1CF] text-center">
+            <div class="w-14 h-14 mx-auto rounded-full bg-white flex items-center justify-center text-mori-sage text-2xl mb-3 shadow-xs">
+              <i class="ph ph-sparkle"></i>
+            </div>
+            <h4 class="font-bold text-sm text-mori-charcoal">「可愛是自己的感受」</h4>
+            <p class="text-xs text-mori-muted mt-1 leading-relaxed">不是為了迎合眼光，而是早晨穿上照鏡子時，發自內心的喜悅。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: WHAT -->
+      <div id="panel-what" class="tab-panel hidden transition-opacity duration-300">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-8 space-y-4">
+            <span class="text-xs font-bold text-mori-caramel tracking-wider uppercase">Products & Services</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-mori-charcoal">日系天然透氣棉麻服飾、微甜剪裁單品與手作周邊</h3>
+            <p class="text-sm text-mori-muted leading-relaxed">
+              全系列選用透氣水洗亞麻、親膚純棉與天絲混紡。我們提供娃娃領長洋裝、寬版落肩刺繡Tee、雙口袋軟紗長裙，以及手工鉤針漁夫帽與抓皺雲朵包。
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs">
+              <div class="p-2.5 rounded-xl bg-mori-cream border border-[#ECE0CD]">🌿 日常微糖洋裝</div>
+              <div class="p-2.5 rounded-xl bg-mori-cream border border-[#ECE0CD]">🧵 原創細緻手刺繡</div>
+              <div class="p-2.5 rounded-xl bg-mori-cream border border-[#ECE0CD]">🧺 手作布藝周邊</div>
+            </div>
+          </div>
+          <div class="md:col-span-4 bg-mori-cream p-5 rounded-2xl border border-[#ECE1CF] text-center">
+            <div class="w-14 h-14 mx-auto rounded-full bg-white flex items-center justify-center text-mori-caramel text-2xl mb-3 shadow-xs">
+              <i class="ph ph-needle"></i>
+            </div>
+            <h4 class="font-bold text-sm text-mori-charcoal">細節處見匠心</h4>
+            <p class="text-xs text-mori-muted mt-1 leading-relaxed">每季僅推出限量天然染印與微荷葉滾邊，講求慢工出細活。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: WHY -->
+      <div id="panel-why" class="tab-panel hidden transition-opacity duration-300">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-8 space-y-4">
+            <span class="text-xs font-bold text-mori-sage tracking-wider uppercase">Brand Reason</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-mori-charcoal">填補「過度成熟冷淡」與「浮誇戲劇化」之間的空白</h3>
+            <p class="text-sm text-mori-muted leading-relaxed">
+              市面上的快時尚多偏向歐美緊身或簡約冷淡風，而日系風格又常偏向難以日常穿著的繁瑣蘿莉塔或昂貴代購。Poco Mori 讓女孩不需要盛裝打扮，也能在上班、上課、漫步街角時，保有剛剛好 30% 的微糖少女感。
+            </p>
+          </div>
+          <div class="md:col-span-4 bg-mori-cream p-5 rounded-2xl border border-[#ECE1CF] text-center">
+            <div class="w-14 h-14 mx-auto rounded-full bg-white flex items-center justify-center text-mori-sage text-2xl mb-3 shadow-xs">
+              <i class="ph ph-heart-half"></i>
+            </div>
+            <h4 class="font-bold text-sm text-mori-charcoal">微糖哲學</h4>
+            <p class="text-xs text-mori-muted mt-1 leading-relaxed">不膩、不造作，如同一杯加了微量蜂蜜的溫潤燕麥奶。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: HOW -->
+      <div id="panel-how" class="tab-panel hidden transition-opacity duration-300">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-8 space-y-4">
+            <span class="text-xs font-bold text-mori-caramel tracking-wider uppercase">Communication Strategy</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-mori-charcoal">以生活感膠卷視覺、牛皮紙溫暖開箱與社群共創連結</h3>
+            <p class="text-sm text-mori-muted leading-relaxed">
+              透過自然光街景街拍、手寫字卡感謝函與原創小木針禮品，讓每一次收件都像收到遠方摯友寄來的森林問候。我們更鼓勵女孩們在 Instagram 標註 <code>#PocoMoriStyle</code> 分享穿搭日記。
+            </p>
+          </div>
+          <div class="md:col-span-4 bg-mori-cream p-5 rounded-2xl border border-[#ECE1CF] text-center">
+            <div class="w-14 h-14 mx-auto rounded-full bg-white flex items-center justify-center text-mori-caramel text-2xl mb-3 shadow-xs">
+              <i class="ph ph-chat-circle-dots"></i>
+            </div>
+            <h4 class="font-bold text-sm text-mori-charcoal">陪伴系品牌</h4>
+            <p class="text-xs text-mori-muted mt-1 leading-relaxed">不是遙不可及的伸展台，而是陪你走過四季節奏的溫柔摯友。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: STORY -->
+      <div id="panel-story" class="tab-panel hidden transition-opacity duration-300">
+        <div class="max-w-3xl mx-auto space-y-4 text-mori-charcoal">
+          <div class="flex items-center gap-2 text-mori-caramel text-xs font-bold tracking-widest uppercase">
+            <i class="ph ph-flower-tulip"></i>
+            Founder's Note
+          </div>
+          <h3 class="text-2xl font-bold">源自長椅上的「木漏れ日」光影</h3>
+          <p class="text-sm text-mori-muted leading-relaxed">
+            我們相信穿衣服不該是件有壓力的事情。寬鬆是為了讓身體深呼吸，微甜是為了讓心情微笑。願你在每一件小森波的衣服裡，都能找到屬於自己的晴朗午後。
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="products" class="py-16 bg-[#F6F0E4]/70 border-t border-[#E8DFC8] reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-mori-caramel font-semibold">Seasonal Capsule</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-mori-charcoal mt-1">小森微甜系列選品</h2>
+          <p class="text-sm text-mori-muted mt-1">100% 實品拍攝・天然親膚面料・手感刺繡小細節・寬鬆透氣輪廓</p>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="flex flex-wrap gap-2 text-xs font-medium" id="productFilterBar">
+          <button onclick="filterProducts('all')" class="cat-pill active px-4 py-2 rounded-full bg-mori-sage text-white transition shadow-sm">
+            全部單品 (8)
+          </button>
+          <button onclick="filterProducts('dress')" class="cat-pill px-4 py-2 rounded-full bg-white text-mori-charcoal border border-[#E0D4BE] hover:bg-white transition">
+            日常洋裝
+          </button>
+          <button onclick="filterProducts('top')" class="cat-pill px-4 py-2 rounded-full bg-white text-mori-charcoal border border-[#E0D4BE] hover:bg-white transition">
+            百搭上衣
+          </button>
+          <button onclick="filterProducts('bottom')" class="cat-pill px-4 py-2 rounded-full bg-white text-mori-charcoal border border-[#E0D4BE] hover:bg-white transition">
+            舒適下身
+          </button>
+          <button onclick="filterProducts('acc')" class="cat-pill px-4 py-2 rounded-full bg-white text-mori-charcoal border border-[#E0D4BE] hover:bg-white transition">
+            手作周邊
+          </button>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Products populated dynamically by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <section id="studio" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+    <div class="bg-white rounded-3xl p-6 sm:p-12 border border-[#EAE0CD] shadow-card">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="px-3 py-1 rounded-full bg-mori-blush-soft text-mori-caramel text-xs font-bold inline-block mb-2">
+          <i class="ph ph-magic-wand"></i> 互動穿搭實驗室
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-mori-charcoal">今天想要什麼樣的「微糖 Look」？</h2>
+        <p class="text-sm text-mori-muted mt-2">任意點選一件真實單品上衣、下身與手作配件，我們為你計算今日搭配氛圍與專屬穿搭籤詩！</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Selection Controls (Left) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Step 1: Tops -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm font-bold text-mori-charcoal flex items-center gap-1.5">
+                <span class="w-5 h-5 rounded-full bg-mori-sage-light text-mori-sage text-xs flex items-center justify-center font-bold">1</span>
+                挑選上衣 (Top)
+              </label>
+              <span id="studioTopPrice" class="text-xs text-mori-caramel font-semibold">NT$ 890</span>
+            </div>
+            <div class="grid grid-cols-3 gap-3" id="studioTops">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Step 2: Bottoms -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm font-bold text-mori-charcoal flex items-center gap-1.5">
+                <span class="w-5 h-5 rounded-full bg-mori-sage-light text-mori-sage text-xs flex items-center justify-center font-bold">2</span>
+                挑選下身 (Bottom)
+              </label>
+              <span id="studioBottomPrice" class="text-xs text-mori-caramel font-semibold">NT$ 1,280</span>
+            </div>
+            <div class="grid grid-cols-3 gap-3" id="studioBottoms">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Step 3: Accessories -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm font-bold text-mori-charcoal flex items-center gap-1.5">
+                <span class="w-5 h-5 rounded-full bg-mori-sage-light text-mori-sage text-xs flex items-center justify-center font-bold">3</span>
+                手作周邊加分 (Accessory)
+              </label>
+              <span id="studioAccPrice" class="text-xs text-mori-caramel font-semibold">NT$ 650</span>
+            </div>
+            <div class="grid grid-cols-3 gap-3" id="studioAccs">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Lookbook Result Preview Card (Right) -->
+        <div class="lg:col-span-5 bg-mori-cream rounded-3xl p-6 border border-[#E9E0CE] relative overflow-hidden shadow-sm">
+          <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/70 blur-xl pointer-events-none"></div>
+
+          <div class="flex items-center justify-between pb-4 border-b border-[#E4D9C4]">
+            <span class="text-xs font-bold text-mori-sage tracking-wider">今日穿搭提案 OOTD</span>
+            <span class="text-[11px] px-2.5 py-1 rounded-full bg-white text-mori-caramel font-bold border border-[#E2D7C2]">
+              甜度：30% 微糖
+            </span>
+          </div>
+
+          <!-- Dynamic Look Visual Summary -->
+          <div class="py-6 space-y-4">
+            <div class="bg-white p-3 rounded-2xl border border-[#ECE1CF] flex items-center gap-3">
+              <img id="studioImgTop" src="" alt="Top" class="w-14 h-14 rounded-xl object-cover border border-[#ECE0CD] shrink-0" onerror="this.src='https://placehold.co/100x100/FAF6EE/7C8E6C?text=Top'">
+              <div class="flex-1 min-w-0">
+                <span class="text-[10px] text-mori-muted">精選上身</span>
+                <p class="text-sm font-bold text-mori-charcoal truncate" id="studioResultTopName">落肩奶油手繪刺繡 Tee</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-2xl border border-[#ECE1CF] flex items-center gap-3">
+              <img id="studioImgBottom" src="" alt="Bottom" class="w-14 h-14 rounded-xl object-cover border border-[#ECE0CD] shrink-0" onerror="this.src='https://placehold.co/100x100/FAF6EE/C68B59?text=Bottom'">
+              <div class="flex-1 min-w-0">
+                <span class="text-[10px] text-mori-muted">精選下身</span>
+                <p class="text-sm font-bold text-mori-charcoal truncate" id="studioResultBottomName">日系工裝雙口袋背帶寬褲</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-2xl border border-[#ECE1CF] flex items-center gap-3">
+              <img id="studioImgAcc" src="" alt="Accessory" class="w-14 h-14 rounded-xl object-cover border border-[#ECE0CD] shrink-0" onerror="this.src='https://placehold.co/100x100/FAF6EE/E8A598?text=Acc'">
+              <div class="flex-1 min-w-0">
+                <span class="text-[10px] text-mori-muted">靈魂配件</span>
+                <p class="text-sm font-bold text-mori-charcoal truncate" id="studioResultAccName">抓皺雲朵棉麻托特包</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fortune description -->
+          <div class="p-4 rounded-2xl bg-white/70 border border-[#E6DBCA] text-xs text-mori-charcoal space-y-1">
+            <p class="font-bold text-mori-caramel flex items-center gap-1">
+              <i class="ph ph-sparkle"></i> 穿搭心情：<span id="studioMoodTitle">代官山午後野餐森女風 🧺</span>
+            </p>
+            <p class="text-mori-muted leading-relaxed" id="studioMoodDesc">
+              淺色系的溫柔交織，寬鬆舒適中透出剛剛好的甜美。最適合帶上一杯燕麥奶拿鐵與底片相機，漫步林蔭之間。
+            </p>
+          </div>
+
+          <!-- Price & Quick Add Combo -->
+          <div class="mt-6 pt-4 border-t border-[#E4D9C4] flex items-center justify-between">
+            <div>
+              <span class="text-xs text-mori-muted block">整套微糖組合價</span>
+              <span class="text-xl font-bold text-mori-caramel" id="studioTotalPrice">NT$ 2,538</span>
+            </div>
+            <button onclick="addStudioOutfitToCart()" class="px-5 py-2.5 rounded-full bg-mori-sage text-white text-xs font-bold hover:bg-[#68795A] transition shadow flex items-center gap-1.5">
+              <i class="ph ph-shopping-bag-open text-base"></i>
+              一鍵整套打包 (享9折)
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="ootd" class="py-16 bg-[#F6F0E4]/50 border-t border-[#E8DFC8] reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-widest text-mori-caramel font-semibold">Community Diary</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-mori-charcoal mt-1">小森女孩的生活札記</h2>
+        <p class="text-sm text-mori-muted mt-2">在社群標註 <strong>#PocoMoriStyle</strong>，和我們分享你今天遇見的微糖風景。</p>
+      </div>
+
+      <!-- Real Lifestyle Photography Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        
+        <!-- Post 1 -->
+        <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-[#E6DCC9] hover:-translate-y-1.5 transition-transform duration-300">
+          <div class="aspect-[4/5] rounded-xl overflow-hidden photo-zoom-container relative">
+            <img 
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" 
+              alt="週末代官山野餐" 
+              class="w-full h-full object-cover"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/600x750/FAF6EE/7C8E6C?text=OOTD+1'"
+            />
+            <span class="absolute top-2.5 left-2.5 bg-black/45 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm">@mori_yuki</span>
+          </div>
+          <div class="pt-3 pb-1 flex items-center justify-between text-xs">
+            <span class="text-mori-charcoal font-medium">週末代官山野餐 🧺</span>
+            <button onclick="toggleLike(this)" class="flex items-center gap-1 text-mori-blush hover:scale-110 transition">
+              <i class="ph ph-heart text-base"></i>
+              <span class="text-[11px] font-bold">142</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-[#E6DCC9] hover:-translate-y-1.5 transition-transform duration-300">
+          <div class="aspect-[4/5] rounded-xl overflow-hidden photo-zoom-container relative">
+            <img 
+              src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=600&q=80" 
+              alt="下北澤古著巡禮" 
+              class="w-full h-full object-cover"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/600x750/FAF6EE/C68B59?text=OOTD+2'"
+            />
+            <span class="absolute top-2.5 left-2.5 bg-black/45 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm">@haru_closet</span>
+          </div>
+          <div class="pt-3 pb-1 flex items-center justify-between text-xs">
+            <span class="text-mori-charcoal font-medium">下北澤古著巡禮 🍂</span>
+            <button onclick="toggleLike(this)" class="flex items-center gap-1 text-mori-blush hover:scale-110 transition">
+              <i class="ph ph-heart text-base"></i>
+              <span class="text-[11px] font-bold">289</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-[#E6DCC9] hover:-translate-y-1.5 transition-transform duration-300">
+          <div class="aspect-[4/5] rounded-xl overflow-hidden photo-zoom-container relative">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" 
+              alt="雨後天晴的通勤日" 
+              class="w-full h-full object-cover"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/600x750/FAF6EE/E8A598?text=OOTD+3'"
+            />
+            <span class="absolute top-2.5 left-2.5 bg-black/45 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm">@rin_daily</span>
+          </div>
+          <div class="pt-3 pb-1 flex items-center justify-between text-xs">
+            <span class="text-mori-charcoal font-medium">雨後天晴的通勤日 🫧</span>
+            <button onclick="toggleLike(this)" class="flex items-center gap-1 text-mori-blush hover:scale-110 transition">
+              <i class="ph ph-heart text-base"></i>
+              <span class="text-[11px] font-bold">95</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Post 4 -->
+        <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-[#E6DCC9] hover:-translate-y-1.5 transition-transform duration-300">
+          <div class="aspect-[4/5] rounded-xl overflow-hidden photo-zoom-container relative">
+            <img 
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" 
+              alt="手作花藝課一瞥" 
+              class="w-full h-full object-cover"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/600x750/FAF6EE/7C8E6C?text=OOTD+4'"
+            />
+            <span class="absolute top-2.5 left-2.5 bg-black/45 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm">@chia_tea</span>
+          </div>
+          <div class="pt-3 pb-1 flex items-center justify-between text-xs">
+            <span class="text-mori-charcoal font-medium">手作花藝課一瞥 💐</span>
+            <button onclick="toggleLike(this)" class="flex items-center gap-1 text-mori-blush hover:scale-110 transition">
+              <i class="ph ph-heart text-base"></i>
+              <span class="text-[11px] font-bold">310</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+    <div class="rounded-3xl bg-white p-8 sm:p-12 border border-[#E5DAC4] shadow-card text-center space-y-4">
+      <div class="w-12 h-12 mx-auto rounded-full bg-mori-blush-soft text-mori-blush flex items-center justify-center text-2xl">
+        <i class="ph ph-paper-plane-tilt"></i>
+      </div>
+      <h3 class="text-2xl font-bold text-mori-charcoal">訂閱小森波的森林信件</h3>
+      <p class="text-sm text-mori-muted max-w-md mx-auto">
+        每月一封無廣告的溫柔刊物，包含季節穿搭提案、日系手作甜點食譜，首購立即享有 NT$ 100 折價券。
+      </p>
+      <form onsubmit="handleNewsletter(event)" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2 pt-2">
+        <input 
+          type="email" 
+          id="newsletterEmail"
+          required 
+          placeholder="填入您的電子信箱..." 
+          class="flex-1 px-4 py-3 rounded-full bg-mori-cream border border-[#DDD0B8] text-xs focus:outline-none focus:ring-2 focus:ring-mori-sage"
+        />
+        <button type="submit" class="px-6 py-3 rounded-full bg-mori-sage text-white text-xs font-bold hover:bg-[#687859] transition shadow">
+          收取微糖信件
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="mt-auto bg-[#ECE4D5] border-t border-[#DFD5C0] pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-[#D8CDAF]">
+        
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="text-lg font-bold text-mori-charcoal">小森波 Poco Mori</span>
+          </div>
+          <p class="text-xs text-mori-muted leading-relaxed">
+            以自然棉麻與寬鬆舒適為核心，讓你在平凡的生活中，隨時穿出日劇般的溫柔與自在。
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-mori-charcoal uppercase tracking-wider mb-3">系列專區</h4>
+          <ul class="space-y-2 text-xs text-mori-muted">
+            <li><a href="#products" class="hover:text-mori-sage transition">2026 春季木漏れ日</a></li>
+            <li><a href="#products" class="hover:text-mori-sage transition">原創棉麻洋裝</a></li>
+            <li><a href="#products" class="hover:text-mori-sage transition">寬鬆工裝背帶褲</a></li>
+            <li><a href="#products" class="hover:text-mori-sage transition">手作編織生活配件</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-mori-charcoal uppercase tracking-wider mb-3">貼心服務</h4>
+          <ul class="space-y-2 text-xs text-mori-muted">
+            <li><a href="#story" class="hover:text-mori-sage transition">關於品牌與理念</a></li>
+            <li><a href="#studio" class="hover:text-mori-sage transition">穿搭靈感實驗室</a></li>
+            <li><a href="javascript:void(0)" onclick="showToast('全館滿 NT$ 1500 免運', '下單後 24 小時內以精緻牛皮紙盒妥善出貨')" class="hover:text-mori-sage transition">配送與退換貨政策</a></li>
+            <li><a href="javascript:void(0)" onclick="showToast('尺寸諮詢', '客服信箱：hello@pocomori.tw')" class="hover:text-mori-sage transition">線上尺寸諮詢</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-mori-charcoal uppercase tracking-wider mb-3">關注小森風景</h4>
+          <div class="flex gap-3 text-lg text-mori-charcoal">
+            <a href="javascript:void(0)" onclick="showToast('Instagram: @pocomori_tw', '感謝追蹤日常小森照片！')" class="w-9 h-9 rounded-full bg-white flex items-center justify-center hover:bg-mori-sage hover:text-white transition shadow-xs"><i class="ph ph-instagram-logo"></i></a>
+            <a href="javascript:void(0)" onclick="showToast('LINE官方帳號: @pocomori', '加入好友享專屬 NT$ 50 優惠券')" class="w-9 h-9 rounded-full bg-white flex items-center justify-center hover:bg-mori-sage hover:text-white transition shadow-xs"><i class="ph ph-chat-circle"></i></a>
+            <a href="javascript:void(0)" onclick="showToast('Facebook: 小森波 Poco Mori', '歡迎關注新品預告')" class="w-9 h-9 rounded-full bg-white flex items-center justify-center hover:bg-mori-sage hover:text-white transition shadow-xs"><i class="ph ph-facebook-logo"></i></a>
+          </div>
+          <p class="text-[11px] text-mori-muted mt-3">客服信箱：hello@pocomori.tw<br>服務時間：週一至週五 10:00 - 18:00</p>
+        </div>
+
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-mori-muted gap-2">
+        <p>© 2026 小森波 Poco Mori (こもれびポ). All Rights Reserved.</p>
+        <p class="flex items-center gap-1">Made with <i class="ph ph-heart text-mori-blush"></i> for gentle everyday souls.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button id="backToTopBtn" onclick="scrollToTop()" class="fixed bottom-6 left-6 z-40 w-12 h-12 rounded-full bg-white text-mori-charcoal shadow-float border border-[#E4D9C4] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-mori-sage-light hover:text-mori-sage group" aria-label="返回頂部">
+    <i class="ph ph-arrow-up text-lg group-hover:-translate-y-0.5 transition-transform"></i>
+  </button>
+
+  <!-- Cart Drawer Backdrop -->
+  <div id="cartDrawerBackdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <!-- Cart Slide-over Drawer -->
+  <div id="cartDrawer" class="fixed top-0 right-0 bottom-0 w-full sm:w-[420px] bg-[#FAF6EE] z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out border-l border-[#E2D6C0]">
+    
+    <!-- Drawer Header -->
+    <div class="p-5 border-b border-[#E3D7C1] flex items-center justify-between bg-white">
+      <div class="flex items-center gap-2">
+        <i class="ph ph-tote text-xl text-mori-sage"></i>
+        <h3 class="font-bold text-sm text-mori-charcoal">我的微糖購物袋</h3>
+        <span id="cartDrawerCount" class="text-xs px-2 py-0.5 rounded-full bg-mori-cream text-mori-caramel font-semibold border border-[#E3D8C3]">0 件</span>
+      </div>
+      <button onclick="toggleCartDrawer(false)" class="w-8 h-8 rounded-full hover:bg-mori-cream flex items-center justify-center text-mori-charcoal transition" aria-label="關閉購物袋">
+        <i class="ph ph-x text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="p-4 bg-mori-cream/70 border-b border-[#E4D9C3] text-xs">
+      <div class="flex items-center justify-between mb-1.5 font-medium">
+        <span class="text-mori-muted">滿 NT$ 1,500 即享免運優惠</span>
+        <span id="freeShippingStatus" class="text-mori-caramel font-bold">計算中...</span>
+      </div>
+      <div class="w-full h-2 rounded-full bg-[#E5DAC5] overflow-hidden">
+        <div id="shippingProgressBar" class="h-full bg-mori-sage transition-all duration-300" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scroll List -->
+    <div id="cartItemsList" class="flex-1 overflow-y-auto p-4 space-y-3">
+      <!-- Items dynamically injected by JS -->
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="p-5 border-t border-[#E3D7C1] bg-white space-y-3">
+      <div class="flex items-center justify-between text-xs text-mori-muted">
+        <span>商品小計</span>
+        <span id="cartSubtotal" class="font-semibold text-mori-charcoal">NT$ 0</span>
+      </div>
+      <div class="flex items-center justify-between text-xs text-mori-muted">
+        <span>預估運費</span>
+        <span class="text-mori-sage font-medium">免運特惠中</span>
+      </div>
+      <div class="pt-2 border-t border-[#F0E6D5] flex items-center justify-between">
+        <span class="text-sm font-bold text-mori-charcoal">總付款金額</span>
+        <span id="cartTotalPrice" class="text-xl font-bold text-mori-caramel">NT$ 0</span>
+      </div>
+      <button onclick="triggerCheckout()" class="w-full py-3.5 rounded-full bg-mori-sage text-white text-sm font-bold hover:bg-[#687859] transition shadow flex items-center justify-center gap-2">
+        <i class="ph ph-check-circle text-lg"></i>
+        前往結帳買單
+      </button>
+    </div>
+
+  </div>
+
+  <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative border border-[#E5DAC3] max-h-[90vh] overflow-y-auto">
+      
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-mori-cream hover:bg-[#EAE0CD] flex items-center justify-center text-mori-charcoal transition" aria-label="關閉商品詳情">
+        <i class="ph ph-x text-lg"></i>
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <!-- Modal Image (Real Photo) -->
+        <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-mori-cream border border-[#ECE0CD]">
+          <img id="modalProductImage" src="" alt="商品實拍照" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/FAF6EE/7C8E6C?text=Poco+Mori'"/>
+        </div>
+
+        <!-- Modal Info -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2">
+            <span id="modalProductBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-mori-sage-light text-mori-sage">人氣單品</span>
+            <span id="modalProductFabric" class="text-xs text-mori-muted">100% 混紡天絲麻</span>
+          </div>
+
+          <h3 id="modalProductTitle" class="text-xl font-bold text-mori-charcoal">娃娃領泡泡袖棉麻洋裝</h3>
+          
+          <div class="flex items-baseline gap-2">
+            <span id="modalProductPrice" class="text-2xl font-bold text-mori-caramel">NT$ 1,680</span>
+            <span id="modalProductOriginalPrice" class="text-xs text-mori-muted line-through">NT$ 1,980</span>
+          </div>
+
+          <p id="modalProductDesc" class="text-xs text-mori-muted leading-relaxed">
+            立體娃娃圓領與微泡泡袖設計，完美修飾肩頸與手臂線條。落肩剪裁不顯臃腫，裙身兩側貼心附有深口袋。
+          </p>
+
+          <!-- Color selection -->
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-mori-charcoal block">顏色：<span id="modalSelectedColor">奶油杏色</span></label>
+            <div class="flex gap-2" id="modalColorSwatches">
+              <!-- Swatches injected by JS -->
+            </div>
+          </div>
+
+          <!-- Size selection -->
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-mori-charcoal block">尺寸：</label>
+            <div class="flex gap-2">
+              <button class="px-3.5 py-1.5 rounded-lg border border-mori-sage bg-mori-sage-light text-mori-sage text-xs font-bold">Free Size (適 S - XL)</button>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="addModalProductToCart()" class="w-full py-3 rounded-full bg-mori-sage text-white text-sm font-bold hover:bg-[#687859] transition shadow flex items-center justify-center gap-2">
+              <i class="ph ph-shopping-bag text-lg"></i>
+              加入我的購物袋
+            </button>
+          </div>
+
+          <div class="border-t border-[#EFE5D3] pt-3 text-[11px] text-mori-muted space-y-1">
+            <p>✓ 100% 實品拍攝・下單後 24-48 小時內出貨</p>
+            <p>✓ 試穿報告：158cm / 50kg 寬鬆微甜舒適長度過膝</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-white border border-[#E3D7C1] text-mori-charcoal px-5 py-3.5 rounded-2xl shadow-float flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div id="toastIcon" class="w-8 h-8 rounded-full bg-mori-sage-light text-mori-sage flex items-center justify-center text-lg shrink-0">
+      <i class="ph ph-check"></i>
+    </div>
+    <div>
+      <h5 id="toastTitle" class="text-xs font-bold text-mori-charcoal">已成功加入購物袋</h5>
+      <p id="toastMessage" class="text-[11px] text-mori-muted">娃娃領抓皺棉麻洋裝 已放入購物清單</p>
+    </div>
+  </div>
+
+  <script>
+    /* ========================================================
+       REAL PRODUCT DATABASE (High Quality Natural Japanese Clothing Photography)
+    ======================================================== */
+    const PRODUCTS = [
+      {
+        id: 'p1',
+        title: '娃娃領抓皺棉麻長洋裝',
+        category: 'dress',
+        price: 1680,
+        origPrice: 1980,
+        badge: '春季熱賣 No.1',
+        fabric: '100% 混婦天然棉麻',
+        color: '奶油鼠尾草綠',
+        colors: [
+          { name: '奶油鼠尾草綠', hex: '#8A9D79' },
+          { name: '燕麥奶白', hex: '#F3EDE2' },
+          { name: '焦糖暖棕', hex: '#C68B59' }
+        ],
+        desc: '經典日系大娃娃領與自然抓皺下擺，兩側附深口袋。穿上它，彷彿午後走在下北澤樹蔭下的微風吹拂。',
+        image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p2',
+        title: '落肩奶油手繪小刺繡 Tee',
+        category: 'top',
+        price: 890,
+        origPrice: 1080,
+        badge: '原創刺繡',
+        fabric: '280g 重磅親膚純棉',
+        color: '柔和香草黃',
+        colors: [
+          { name: '柔和香草黃', hex: '#F9F1D6' },
+          { name: '晨曦米白', hex: '#F7F4EC' },
+          { name: '淡煙燻灰粉', hex: '#EAC8C1' }
+        ],
+        desc: '胸前手繪森系橡果刺繡，落肩無束縛微寬剪裁，搭配任何下裝都能展現自然的鬆弛感。',
+        image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p3',
+        title: '日系雙口袋白紗長裙',
+        category: 'bottom',
+        price: 1480,
+        origPrice: 1680,
+        badge: '修身包容',
+        fabric: '輕柔雙層細網紗・透氣親膚棉裡',
+        color: '純白雲朵',
+        colors: [
+          { name: '純白雲朵', hex: '#FDFCFA' },
+          { name: '燕麥香檳杏', hex: '#EFE7DA' },
+          { name: '霧灰薄暮粉', hex: '#E2D4D2' }
+        ],
+        desc: '蓬鬆輕盈卻垂墜顯瘦的多層次軟紗，內襯選用親膚透氣純棉，兩側貼心隱藏雙口袋，漫步時宛如雲朵輕揚，散發剛剛好的微糖仙氣。',
+        image: 'https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p4',
+        title: '抓皺雲朵棉麻托特包',
+        category: 'acc',
+        price: 650,
+        origPrice: 790,
+        badge: '手作質感',
+        fabric: '洗水厚磅棉麻帆布',
+        color: '米白雲朵色',
+        colors: [
+          { name: '米白雲朵色', hex: '#FAF6EF' },
+          { name: '抹茶淺綠', hex: '#8C9B80' }
+        ],
+        desc: '如雲朵般澎潤抓皺背帶，減輕肩部負擔。大容量可輕鬆放入保溫瓶、折疊傘與隨身詩集。',
+        image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p5',
+        title: '鏤空花邊薄針織微甜開衫',
+        category: 'top',
+        price: 1180,
+        origPrice: 1380,
+        badge: '冷氣房必備',
+        fabric: '柔軟天絲混紡針織',
+        color: '杏桃暖粉',
+        colors: [
+          { name: '杏桃暖粉', hex: '#F6D5CE' },
+          { name: '鼠尾草淡綠', hex: '#D2DDD0' }
+        ],
+        desc: '精緻木質貝殼扣與下擺細小花邊鉤針，夏季外出防曬、室內冷氣房保暖的優雅伴侶。',
+        image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p6',
+        title: '圍裙式荷葉吊帶半身裙',
+        category: 'dress',
+        price: 1380,
+        origPrice: 1580,
+        badge: '百搭疊穿',
+        fabric: '水洗棉麻',
+        color: '焦糖紅茶色',
+        colors: [
+          { name: '焦糖紅茶色', hex: '#9E6447' },
+          { name: '素雅原麻色', hex: '#E4DAC6' }
+        ],
+        desc: '高腰圍裙版型，下擺飾以微荷葉花邊，內搭襯衫或簡單T恤皆能一秒切換日系文青感。',
+        image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p7',
+        title: '鬆緊花苞腰寬管棉麻褲',
+        category: 'bottom',
+        price: 1080,
+        origPrice: 1280,
+        badge: '涼感透氣',
+        fabric: '天絲亞麻雙層織物',
+        color: '溫和霧灰綠',
+        colors: [
+          { name: '溫和霧灰綠', hex: '#94A38B' },
+          { name: '燕麥奶色', hex: '#ECE3D0' }
+        ],
+        desc: '腰部彈性花苞抓摺，附棉繩綁帶。透氣度極佳，盛夏穿著也能維持一整天的乾爽舒服。',
+        image: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p8',
+        title: '手工鉤針花朵軟頂漁夫帽',
+        category: 'acc',
+        price: 590,
+        origPrice: 720,
+        badge: '手作限量',
+        fabric: '日本進口和紙棉線',
+        color: '向日葵花蕊杏',
+        colors: [
+          { name: '向日葵花蕊杏', hex: '#F2E8D5' },
+          { name: '微醺大地棕', hex: '#876D55' }
+        ],
+        desc: '可隨身折疊收納於包包內不易變形，邊緣微微荷葉波浪，完美遮陽同時點綴好心情。',
+        image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=700&q=80'
+      }
+    ];
+
+    // Default Cart items with real images
+    let cart = [
+      { id: 'p1', title: '娃娃領抓皺棉麻長洋裝', price: 1680, qty: 1, color: '奶油鼠尾草綠', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=200&q=80' },
+      { id: 'p2', title: '落肩奶油手繪小刺繡 Tee', price: 890, qty: 1, color: '柔和香草黃', image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=200&q=80' }
+    ];
+
+    let currentModalProduct = null;
+
+    // Studio Mix & Match Selection with real item photos
+    const STUDIO_ITEMS = {
+      tops: [
+        { id: 'st1', name: '落肩奶油手繪刺繡 Tee', price: 890, color: '香草奶黃', image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=300&q=80' },
+        { id: 'st2', name: '水手抓皺花邊短袖襯衫', price: 1150, color: '清透原白', image: 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=300&q=80' },
+        { id: 'st3', name: '鏤空花邊薄針織微甜開衫', price: 1180, color: '杏桃淡粉', image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=300&q=80' }
+      ],
+      bottoms: [
+        { id: 'sb1', name: '日系雙口袋白紗長裙', price: 1480, color: '純白雲朵', image: 'https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?auto=format&fit=crop&w=300&q=80' },
+        { id: 'sb2', name: '鬆緊花苞腰透氣長褲', price: 1080, color: '鼠尾草綠', image: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=300&q=80' },
+        { id: 'sb3', name: '圍裙式荷葉吊帶半身裙', price: 1350, color: '燕麥奶杏', image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=300&q=80' }
+      ],
+      accs: [
+        { id: 'sa1', name: '抓皺雲朵棉麻托特包', price: 650, color: '純淨米白', image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=300&q=80' },
+        { id: 'sa2', name: '手工鉤針花朵漁夫帽', price: 590, color: '亞麻暖色', image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=300&q=80' },
+        { id: 'sa3', name: '荷葉邊透氣中筒棉襪組', price: 320, color: '三色微糖組', image: 'https://images.unsplash.com/photo-1582965372486-66f91f37e193?auto=format&fit=crop&w=300&q=80' }
+      ]
+    };
+
+    let selectedStudio = { top: 0, bottom: 0, acc: 0 };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProducts('all');
+      renderStudioOptions();
+      updateStudioView();
+      updateCartUI();
+      initScrollEffects();
+      initScrollytelling();
+    });
+
+    /* ========================================================
+       SCROLLYTELLING CONTROLLER (隨捲動切換章節圖文與進度)
+    ======================================================== */
+    function initScrollytelling() {
+      const steps = document.querySelectorAll('.story-step');
+      const stickyImg = document.getElementById('storyStickyImg');
+      const badge = document.getElementById('storyChapterBadge');
+      const textBadge = document.getElementById('storyChapterText');
+      const subhead = document.getElementById('storyImageSubhead');
+      const title = document.getElementById('storyImageTitle');
+      const dots = document.querySelectorAll('.step-dot');
+
+      if (!steps.length || !stickyImg) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const stepEl = entry.target;
+            const stepIdx = parseInt(stepEl.getAttribute('data-step'), 10);
+            const imgUrl = stepEl.getAttribute('data-img');
+            const badgeStr = stepEl.getAttribute('data-badge');
+            const subStr = stepEl.getAttribute('data-sub');
+            const titleStr = stepEl.getAttribute('data-title');
+
+            // Update active states for steps
+            steps.forEach((s, idx) => {
+              if (idx === stepIdx) {
+                s.classList.remove('opacity-60');
+                s.classList.add('opacity-100', 'ring-2', 'ring-mori-sage/20');
+              } else {
+                s.classList.add('opacity-60');
+                s.classList.remove('opacity-100', 'ring-2', 'ring-mori-sage/20');
+              }
+            });
+
+            // Update sticky visual with subtle transition
+            if (stickyImg.src !== imgUrl) {
+              stickyImg.style.opacity = '0.3';
+              stickyImg.style.transform = 'scale(0.96)';
+              setTimeout(() => {
+                stickyImg.src = imgUrl;
+                stickyImg.style.opacity = '1';
+                stickyImg.style.transform = 'scale(1)';
+              }, 200);
+            }
+
+            if (textBadge) textBadge.innerText = badgeStr;
+            if (subhead) subhead.innerText = subStr;
+            if (title) title.innerText = titleStr;
+
+            // Update progress dots
+            dots.forEach((dot, dIdx) => {
+              if (dIdx === stepIdx) {
+                dot.classList.remove('bg-[#E0D5C1]');
+                dot.classList.add('bg-mori-sage', 'scale-125');
+              } else {
+                dot.classList.remove('bg-mori-sage', 'scale-125');
+                dot.classList.add('bg-[#E0D5C1]');
+              }
+            });
+          }
+        });
+      }, {
+        threshold: 0.5,
+        rootMargin: '-10% 0px -25% 0px'
+      });
+
+      steps.forEach(step => observer.observe(step));
+    }
+
+    /* ========================================================
+       SCROLL & TEXT EFFECTS IMPLEMENTATION
+    ======================================================== */
+    function initScrollEffects() {
+      const progressBar = document.getElementById('scrollProgress');
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      const mainNav = document.getElementById('mainNav');
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / (scrollHeight || 1)) * 100;
+
+        if (progressBar) progressBar.style.width = `${progress}%`;
+
+        // Nav shadow & blur adjustment
+        if (mainNav) {
+          if (scrollTop > 50) {
+            mainNav.classList.add('shadow-md', 'bg-white/95');
+            mainNav.classList.remove('bg-[#FAF6EE]/90');
+          } else {
+            mainNav.classList.remove('shadow-md', 'bg-white/95');
+            mainNav.classList.add('bg-[#FAF6EE]/90');
+          }
+        }
+
+        // Back to top visibility
+        if (backToTopBtn) {
+          if (scrollTop > 400) {
+            backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+          } else {
+            backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+          }
+        }
+      });
+
+      // IntersectionObserver for Reveal-on-scroll
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ========================================================
+       PRODUCT CATALOG FUNCTIONS WITH REAL PHOTOS
+    ======================================================== */
+    function renderProducts(filter) {
+      const grid = document.getElementById('productGrid');
+      if (!grid) return;
+      const filtered = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="group bg-white rounded-3xl p-4 border border-[#E8DFC9] shadow-sm hover:shadow-card transition duration-300 flex flex-col justify-between">
+          <div>
+            <!-- Visual Real Photo Box -->
+            <div class="relative aspect-[4/5] rounded-2xl bg-mori-cream overflow-hidden border border-[#F0E6D5] photo-zoom-container">
+              <img 
+                src="${p.image}" 
+                alt="${p.title}" 
+                class="w-full h-full object-cover object-center"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/600x750/FAF6EE/7C8E6C?text=Poco+Mori'"
+              />
+              
+              <!-- Badge -->
+              <span class="absolute top-3 left-3 bg-white/95 text-mori-charcoal text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#E5DAC3] shadow-xs">
+                ${p.badge}
+              </span>
+
+              <!-- Quick action hover overlay -->
+              <div class="absolute inset-x-3 bottom-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button onclick="openProductModal('${p.id}')" class="flex-1 py-2.5 rounded-xl bg-white/95 hover:bg-white text-mori-charcoal text-xs font-bold shadow-sm transition flex items-center justify-center gap-1">
+                  <i class="ph ph-eye"></i> 檢視詳情
+                </button>
+                <button onclick="quickAddToCart('${p.id}')" class="w-10 py-2.5 rounded-xl bg-mori-sage text-white hover:bg-[#687859] text-xs font-bold shadow-sm transition flex items-center justify-center" aria-label="直接加入購物袋">
+                  <i class="ph ph-plus text-base"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Details -->
+            <div class="pt-4 space-y-1">
+              <span class="text-[11px] text-mori-muted">${p.fabric}</span>
+              <h3 class="text-sm font-bold text-mori-charcoal group-hover:text-mori-sage transition truncate">
+                ${p.title}
+              </h3>
+
+              <!-- Color Dot Previews -->
+              <div class="flex items-center gap-1.5 pt-1">
+                ${p.colors.map(c => `
+                  <span class="w-3.5 h-3.5 rounded-full border border-black/10 inline-block shadow-2xs" style="background-color: ${c.hex};" title="${c.name}"></span>
+                `).join('')}
+                <span class="text-[10px] text-mori-muted ml-1">${p.colors.length}色可選</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & Action -->
+          <div class="pt-3 border-t border-[#F2EAE0] mt-4 flex items-center justify-between">
+            <div>
+              <span class="text-base font-bold text-mori-caramel">NT$ ${p.price.toLocaleString()}</span>
+              <span class="text-[11px] text-mori-muted line-through ml-1">NT$ ${p.origPrice.toLocaleString()}</span>
+            </div>
+            <button onclick="openProductModal('${p.id}')" class="text-xs text-mori-sage font-bold hover:underline flex items-center gap-0.5">
+              細看 <i class="ph ph-caret-right"></i>
+            </button>
+          </div>
+
+        </div>
+      `).join('');
+    }
+
+    function filterProducts(category) {
+      document.querySelectorAll('#productFilterBar .cat-pill').forEach(btn => {
+        btn.classList.remove('active', 'bg-mori-sage', 'text-white');
+        btn.classList.add('bg-white', 'text-mori-charcoal', 'border', 'border-[#E0D4BE]');
+      });
+
+      if (event && event.target) {
+        const activeBtn = event.target;
+        activeBtn.classList.add('active', 'bg-mori-sage', 'text-white');
+        activeBtn.classList.remove('bg-white', 'text-mori-charcoal', 'border-[#E0D4BE]');
+      }
+
+      renderProducts(category);
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('#fourWTabs .tab-btn').forEach(btn => {
+        btn.classList.remove('bg-mori-sage', 'text-white', 'active');
+        btn.classList.add('bg-white', 'text-mori-charcoal', 'border', 'border-[#E2D6C0]');
+      });
+
+      const activeBtn = document.getElementById(`tab-${tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-mori-charcoal');
+        activeBtn.classList.add('bg-mori-sage', 'text-white', 'active');
+      }
+
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.add('hidden');
+        panel.classList.remove('block');
+      });
+
+      const targetPanel = document.getElementById(`panel-${tabId}`);
+      if (targetPanel) {
+        targetPanel.classList.remove('hidden');
+        targetPanel.classList.add('block');
+      }
+    }
+
+    /* ========================================================
+       STUDIO MIX & MATCH WITH REAL PHOTO THUMBNAILS
+    ======================================================== */
+    function renderStudioOptions() {
+      // Tops
+      const topsContainer = document.getElementById('studioTops');
+      if (topsContainer) {
+        topsContainer.innerHTML = STUDIO_ITEMS.tops.map((item, idx) => `
+          <button onclick="selectStudioItem('top', ${idx})" class="p-2.5 rounded-2xl border text-left transition flex items-center gap-2.5 ${selectedStudio.top === idx ? 'border-mori-sage bg-mori-sage-light/50 ring-2 ring-mori-sage/30' : 'border-[#E2D8C3] bg-mori-cream/40 hover:bg-white'}">
+            <img src="${item.image}" alt="${item.name}" class="w-10 h-10 rounded-xl object-cover shrink-0" onerror="this.src='https://placehold.co/80x80/FAF6EE/7C8E6C?text=Top'"/>
+            <div class="min-w-0">
+              <div class="text-xs font-bold text-mori-charcoal truncate">${item.name}</div>
+              <div class="text-[11px] text-mori-caramel font-semibold">NT$ ${item.price}</div>
+            </div>
+          </button>
+        `).join('');
+      }
+
+      // Bottoms
+      const bottomsContainer = document.getElementById('studioBottoms');
+      if (bottomsContainer) {
+        bottomsContainer.innerHTML = STUDIO_ITEMS.bottoms.map((item, idx) => `
+          <button onclick="selectStudioItem('bottom', ${idx})" class="p-2.5 rounded-2xl border text-left transition flex items-center gap-2.5 ${selectedStudio.bottom === idx ? 'border-mori-sage bg-mori-sage-light/50 ring-2 ring-mori-sage/30' : 'border-[#E2D8C3] bg-mori-cream/40 hover:bg-white'}">
+            <img src="${item.image}" alt="${item.name}" class="w-10 h-10 rounded-xl object-cover shrink-0" onerror="this.src='https://placehold.co/80x80/FAF6EE/C68B59?text=Btm'"/>
+            <div class="min-w-0">
+              <div class="text-xs font-bold text-mori-charcoal truncate">${item.name}</div>
+              <div class="text-[11px] text-mori-caramel font-semibold">NT$ ${item.price}</div>
+            </div>
+          </button>
+        `).join('');
+      }
+
+      // Accessories
+      const accsContainer = document.getElementById('studioAccs');
+      if (accsContainer) {
+        accsContainer.innerHTML = STUDIO_ITEMS.accs.map((item, idx) => `
+          <button onclick="selectStudioItem('acc', ${idx})" class="p-2.5 rounded-2xl border text-left transition flex items-center gap-2.5 ${selectedStudio.acc === idx ? 'border-mori-sage bg-mori-sage-light/50 ring-2 ring-mori-sage/30' : 'border-[#E2D8C3] bg-mori-cream/40 hover:bg-white'}">
+            <img src="${item.image}" alt="${item.name}" class="w-10 h-10 rounded-xl object-cover shrink-0" onerror="this.src='https://placehold.co/80x80/FAF6EE/E8A598?text=Acc'"/>
+            <div class="min-w-0">
+              <div class="text-xs font-bold text-mori-charcoal truncate">${item.name}</div>
+              <div class="text-[11px] text-mori-caramel font-semibold">NT$ ${item.price}</div>
+            </div>
+          </button>
+        `).join('');
+      }
+    }
+
+    function selectStudioItem(type, index) {
+      selectedStudio[type] = index;
+      renderStudioOptions();
+      updateStudioView();
+    }
+
+    function updateStudioView() {
+      const top = STUDIO_ITEMS.tops[selectedStudio.top];
+      const btm = STUDIO_ITEMS.bottoms[selectedStudio.bottom];
+      const acc = STUDIO_ITEMS.accs[selectedStudio.acc];
+
+      const resTopName = document.getElementById('studioResultTopName');
+      const resBtmName = document.getElementById('studioResultBottomName');
+      const resAccName = document.getElementById('studioResultAccName');
+
+      if (resTopName) resTopName.innerText = top.name;
+      if (resBtmName) resBtmName.innerText = btm.name;
+      if (resAccName) resAccName.innerText = acc.name;
+
+      const imgTop = document.getElementById('studioImgTop');
+      const imgBtm = document.getElementById('studioImgBottom');
+      const imgAcc = document.getElementById('studioImgAcc');
+
+      if (imgTop) imgTop.src = top.image;
+      if (imgBtm) imgBtm.src = btm.image;
+      if (imgAcc) imgAcc.src = acc.image;
+
+      const topP = document.getElementById('studioTopPrice');
+      const btmP = document.getElementById('studioBottomPrice');
+      const accP = document.getElementById('studioAccPrice');
+
+      if (topP) topP.innerText = `NT$ ${top.price}`;
+      if (btmP) btmP.innerText = `NT$ ${btm.price}`;
+      if (accP) accP.innerText = `NT$ ${acc.price}`;
+
+      // Calculate total with 10% bundle discount
+      const totalRaw = top.price + btm.price + acc.price;
+      const discounted = Math.round(totalRaw * 0.9);
+      const totalEl = document.getElementById('studioTotalPrice');
+      if (totalEl) totalEl.innerText = `NT$ ${discounted.toLocaleString()}`;
+
+      // Mood combinations
+      const moods = [
+        {
+          title: "代官山午後野餐森女風 🧺",
+          desc: "淺色系的溫柔交織，寬鬆舒適中透出剛剛好的甜美。最適合帶上一杯燕麥奶拿鐵與底片相機，漫步林蔭之間。"
+        },
+        {
+          title: "下北澤文藝古著漫步 ☕",
+          desc: "層次感分明又有獨特個性，俐落工裝感揉合了棉麻的親膚溫潤。隨手抓一本舊書，走進巷弄裡隱密的黑膠咖啡館。"
+        },
+        {
+          title: "輕復古日常通勤女孩 🌿",
+          desc: "既保有在辦公室或校園的俐落優雅，又完全擺脫腰腹束縛。即使工作忙碌，也能時時刻刻感受被柔軟包覆的安心感。"
+        }
+      ];
+
+      const moodIdx = (selectedStudio.top + selectedStudio.bottom + selectedStudio.acc) % moods.length;
+      const moodTitle = document.getElementById('studioMoodTitle');
+      const moodDesc = document.getElementById('studioMoodDesc');
+      if (moodTitle) moodTitle.innerText = moods[moodIdx].title;
+      if (moodDesc) moodDesc.innerText = moods[moodIdx].desc;
+    }
+
+    function addStudioOutfitToCart() {
+      const top = STUDIO_ITEMS.tops[selectedStudio.top];
+      const btm = STUDIO_ITEMS.bottoms[selectedStudio.bottom];
+      const acc = STUDIO_ITEMS.accs[selectedStudio.acc];
+
+      addToCartObject(top.id, `${top.name} (穿搭套組)`, Math.round(top.price * 0.9), top.image, top.color);
+      addToCartObject(btm.id, `${btm.name} (穿搭套組)`, Math.round(btm.price * 0.9), btm.image, btm.color);
+      addToCartObject(acc.id, `${acc.name} (穿搭套組)`, Math.round(acc.price * 0.9), acc.image, acc.color);
+
+      showToast("穿搭組合已整套打包！", "已享組合 9 折優惠並放入購物袋 ✨");
+      toggleCartDrawer(true);
+    }
+
+    /* ========================================================
+       SHOPPING CART DRAWER (ROBUST NULL-SAFE IMPLEMENTATION)
+    ======================================================== */
+    function toggleCartDrawer(open) {
+      const drawer = document.getElementById('cartDrawer');
+      const backdrop = document.getElementById('cartDrawerBackdrop');
+
+      if (!drawer || !backdrop) return;
+
+      if (open) {
+        backdrop.classList.remove('hidden');
+        setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+        drawer.classList.remove('translate-x-full');
+      } else {
+        drawer.classList.add('translate-x-full');
+        backdrop.classList.add('opacity-0');
+        setTimeout(() => backdrop.classList.add('hidden'), 300);
+      }
+    }
+
+    function quickAddToCart(productId) {
+      const p = PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+      addToCartObject(p.id, p.title, p.price, p.image, p.color);
+      showToast("已成功加入微糖購物袋！", `${p.title} (${p.color})`);
+    }
+
+    function addToCartObject(id, title, price, image, color) {
+      const existing = cart.find(item => item.id === id && item.color === color);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id, title, price, qty: 1, color, image });
+      }
+      updateCartUI();
+    }
+
+    function updateCartQty(index, delta) {
+      if (!cart[index]) return;
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const list = document.getElementById('cartItemsList');
+      const countBadge = document.getElementById('cartBadgeCount');
+      const drawerCount = document.getElementById('cartDrawerCount');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      const totalEl = document.getElementById('cartTotalPrice');
+      const progressEl = document.getElementById('shippingProgressBar');
+      const shippingStatus = document.getElementById('freeShippingStatus');
+
+      const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
+      const subtotal = cart.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
+
+      // Safe DOM assignment
+      if (countBadge) countBadge.innerText = totalItems;
+      if (drawerCount) drawerCount.innerText = `${totalItems} 件`;
+      if (subtotalEl) subtotalEl.innerText = `NT$ ${subtotal.toLocaleString()}`;
+      if (totalEl) totalEl.innerText = `NT$ ${subtotal.toLocaleString()}`;
+
+      // Free shipping threshold = NT$ 1500
+      const threshold = 1500;
+      if (progressEl && shippingStatus) {
+        if (subtotal >= threshold) {
+          progressEl.style.width = '100%';
+          shippingStatus.innerText = '已達成免運資格！';
+          shippingStatus.className = 'text-mori-sage font-bold';
+        } else {
+          const diff = threshold - subtotal;
+          const pct = Math.min((subtotal / threshold) * 100, 100);
+          progressEl.style.width = `${pct}%`;
+          shippingStatus.innerText = `還差 NT$ ${diff.toLocaleString()}`;
+          shippingStatus.className = 'text-mori-caramel font-bold';
+        }
+      }
+
+      if (!list) return;
+
+      if (cart.length === 0) {
+        list.innerHTML = `
+          <div class="h-64 flex flex-col items-center justify-center text-center text-mori-muted">
+            <i class="ph ph-shopping-bag-open text-4xl text-mori-muted/50 mb-2"></i>
+            <p class="text-sm font-medium">購物袋是空的呢</p>
+            <p class="text-xs text-mori-muted/80 mt-1">去逛逛微糖系列，為日常添點溫柔吧！</p>
+            <a href="#products" onclick="toggleCartDrawer(false)" class="mt-4 px-5 py-2 rounded-full bg-mori-cream text-mori-charcoal text-xs font-bold border border-[#E0D5C1]">挑選單品</a>
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = cart.map((item, idx) => `
+        <div class="flex items-center gap-3.5 bg-white p-3 rounded-2xl border border-[#ECE2D0]">
+          <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-[#ECE0CD]">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/FAF6EE/7C8E6C?text=Item'"/>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="text-xs font-bold text-mori-charcoal truncate">${item.title}</h4>
+            <span class="text-[10px] text-mori-muted block mt-0.5">${item.color || '常規款'}</span>
+            <span class="text-xs font-bold text-mori-caramel block mt-1">NT$ ${item.price.toLocaleString()}</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-mori-cream px-2 py-1 rounded-lg border border-[#E5DAC6]">
+            <button onclick="updateCartQty(${idx}, -1)" class="w-5 h-5 flex items-center justify-center text-mori-charcoal hover:text-red-500 font-bold text-sm" aria-label="減少數量">-</button>
+            <span class="text-xs font-bold text-mori-charcoal w-4 text-center">${item.qty}</span>
+            <button onclick="updateCartQty(${idx}, 1)" class="w-5 h-5 flex items-center justify-center text-mori-charcoal hover:text-mori-sage font-bold text-sm" aria-label="增加數量">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ========================================================
+       PRODUCT MODAL PREVIEW (REAL PHOTO)
+    ======================================================== */
+    function openProductModal(productId) {
+      const p = PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+      currentModalProduct = p;
+
+      const titleEl = document.getElementById('modalProductTitle');
+      const priceEl = document.getElementById('modalProductPrice');
+      const origPriceEl = document.getElementById('modalProductOriginalPrice');
+      const badgeEl = document.getElementById('modalProductBadge');
+      const fabricEl = document.getElementById('modalProductFabric');
+      const descEl = document.getElementById('modalProductDesc');
+      const imageEl = document.getElementById('modalProductImage');
+      const colorEl = document.getElementById('modalSelectedColor');
+
+      if (titleEl) titleEl.innerText = p.title;
+      if (priceEl) priceEl.innerText = `NT$ ${p.price.toLocaleString()}`;
+      if (origPriceEl) origPriceEl.innerText = `NT$ ${p.origPrice.toLocaleString()}`;
+      if (badgeEl) badgeEl.innerText = p.badge;
+      if (fabricEl) fabricEl.innerText = p.fabric;
+      if (descEl) descEl.innerText = p.desc;
+      if (imageEl) imageEl.src = p.image;
+      if (colorEl && p.colors && p.colors[0]) colorEl.innerText = p.colors[0].name;
+
+      const swatchContainer = document.getElementById('modalColorSwatches');
+      if (swatchContainer) {
+        swatchContainer.innerHTML = p.colors.map((c, i) => `
+          <button onclick="selectModalColor('${c.name}', this)" class="swatch-btn w-6 h-6 rounded-full border-2 transition ${i === 0 ? 'border-mori-sage scale-110 shadow-xs' : 'border-white hover:scale-105'}" style="background-color: ${c.hex};" title="${c.name}"></button>
+        `).join('');
+      }
+
+      const modal = document.getElementById('productModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.remove('opacity-0'), 10);
+      }
+    }
+
+    function selectModalColor(colorName, btn) {
+      const colEl = document.getElementById('modalSelectedColor');
+      if (colEl) colEl.innerText = colorName;
+      document.querySelectorAll('#modalColorSwatches .swatch-btn').forEach(b => {
+        b.classList.remove('border-mori-sage', 'scale-110', 'shadow-xs');
+        b.classList.add('border-white');
+      });
+      if (btn) {
+        btn.classList.add('border-mori-sage', 'scale-110', 'shadow-xs');
+        btn.classList.remove('border-white');
+      }
+    }
+
+    function closeProductModal() {
+      const modal = document.getElementById('productModal');
+      if (modal) {
+        modal.classList.add('opacity-0');
+        setTimeout(() => modal.classList.add('hidden'), 300);
+      }
+    }
+
+    function addModalProductToCart() {
+      if (!currentModalProduct) return;
+      const colEl = document.getElementById('modalSelectedColor');
+      const selectedColor = colEl ? colEl.innerText : currentModalProduct.color;
+      addToCartObject(currentModalProduct.id, currentModalProduct.title, currentModalProduct.price, currentModalProduct.image, selectedColor);
+      closeProductModal();
+      showToast("已成功加入微糖購物袋！", `${currentModalProduct.title} (${selectedColor})`);
+    }
+
+    /* ========================================================
+       TOAST NOTIFICATION COMPONENT
+    ======================================================== */
+    let toastTimeout = null;
+    function showToast(title, message) {
+      const toast = document.getElementById('toast');
+      const toastTitle = document.getElementById('toastTitle');
+      const toastMessage = document.getElementById('toastMessage');
+
+      if (!toast) return;
+      if (toastTitle) toastTitle.innerText = title;
+      if (toastMessage) toastMessage.innerText = message;
+
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    function toggleLike(btn) {
+      if (!btn) return;
+      const icon = btn.querySelector('i');
+      const span = btn.querySelector('span');
+      if (!icon || !span) return;
+      let count = parseInt(span.innerText, 10) || 0;
+
+      if (icon.classList.contains('ph-heart-fill')) {
+        icon.classList.remove('ph-heart-fill');
+        icon.classList.add('ph-heart');
+        span.innerText = Math.max(0, count - 1);
+      } else {
+        icon.classList.remove('ph-heart');
+        icon.classList.add('ph-heart-fill');
+        span.innerText = count + 1;
+        showToast("已收藏穿搭靈感！", "可在個人最愛清單隨時回味 🌸");
+      }
+    }
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const input = document.getElementById('newsletterEmail');
+      if (input && input.value) {
+        showToast("歡迎加入小森波家庭 💌", "首購折抵碼【KOMORI100】已送達您的信箱！");
+        input.value = '';
+      }
+    }
+
+    function triggerCheckout() {
+      if (cart.length === 0) {
+        showToast("購物袋目前是空的", "請先挑選喜愛的微糖單品喔！");
+        return;
+      }
+      showToast("訂單模擬成立！", "感謝您的訂購，小森波將於 24 小時內以牛皮紙細緻為您打包出貨 ✨");
+      toggleCartDrawer(false);
+      cart = [];
+      updateCartUI();
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    function toggleSearch() {
+      showToast("即時搜尋功能", "輸入「洋裝」、「棉麻」、「刺繡」即可快速篩選單品 🌿");
+      const filterBar = document.getElementById('products');
+      if (filterBar) filterBar.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
